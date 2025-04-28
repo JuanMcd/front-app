@@ -10,8 +10,9 @@ export default function Home() {
 
   useEffect(() => {
     fetch('https://dms.lat/api/getAllRegister')
+    .then(data => data.json())
     .then(data => {
-      console.log('Data de tabla', data);
+      setList(data)
     })
     .catch(e => {
       alert('Hubo un error al cargar la informacion, intente mas tarde.')
