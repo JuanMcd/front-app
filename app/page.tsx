@@ -1,5 +1,5 @@
 'use client'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Home() {
 
@@ -7,6 +7,16 @@ export default function Home() {
 
   const thStyle = "w-1/6 min-w-[160px] text-lg font-semibold text-white py-4 lg:py-7 px-3 lg:px-4"
   const tdStyle = "text-center text-dark font-medium text-base py-5 px-2 bg-[#F3F6FF] border-b border-l border-[#E8E8E8]"
+
+  useEffect(() => {
+    fetch('https://dms.lat/api/getAllRegister')
+    .then(data => {
+      console.log('Data de tabla', data);
+    })
+    .catch(e => {
+      alert('Hubo un error al cargar la informacion, intente mas tarde.')
+    })
+  }, [])
 
   return (
     <section className="bg-white p-5">
